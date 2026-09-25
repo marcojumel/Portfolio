@@ -14,128 +14,287 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* COVER */
+
+/* =========================
+   COVER
+========================= */
 
 .cover {
     position: relative;
-    height: 100vh;
     width: 100%;
+    height: 100vh;
+    min-height: 650px;
     overflow: hidden;
+    background: #111;
 }
 
 .cover-image {
     position: absolute;
+    inset: 0;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
+    transform: scale(1.02);
 }
 
-.cover-overlay {
+.cover-gradient {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.25);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.25),
+            transparent 30%,
+            transparent 65%,
+            rgba(0,0,0,0.45)
+        );
 }
 
-/* NAME */
+
+/* =========================
+   TOP BAR
+========================= */
+
+.top-bar {
+    position: absolute;
+    top: 30px;
+    left: 4vw;
+    right: 4vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 10px;
+    letter-spacing: 0.18em;
+}
+
+
+/* =========================
+   NAME
+========================= */
 
 .name {
     position: absolute;
+
     top: 50%;
-    left: 8%;
+    left: 4vw;
+
     transform: translateY(-50%);
 
     display: flex;
     flex-direction: column;
 
-    font-size: clamp(60px, 10vw, 160px);
+    font-size: clamp(70px, 12vw, 190px);
     font-weight: 700;
-    line-height: 0.8;
-    letter-spacing: -0.06em;
+
+    line-height: 0.78;
+    letter-spacing: -0.075em;
 }
 
-.name span:last-child {
-    margin-left: 0.8em;
+.name span:nth-child(2) {
+    margin-left: 0.75em;
 }
 
-/* INTRO */
+
+/* =========================
+   INTRO
+========================= */
 
 .introduction {
     position: absolute;
-    right: 8%;
-    bottom: 12%;
-    
-    font-size: 18px;
+
+    right: 5vw;
+    bottom: 15vh;
+
+    font-size: 16px;
     line-height: 1.35;
+
+    text-align: left;
 }
 
-/* ENTER */
+
+/* =========================
+   ENTER
+========================= */
 
 .enter {
     position: absolute;
-    bottom: 5%;
+
     left: 50%;
+    bottom: 30px;
+
     transform: translateX(-50%);
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+
+    white-space: nowrap;
 }
 
 .arrow {
-    font-size: 24px;
-    margin-top: 8px;
+    margin-top: 9px;
+    font-size: 20px;
+
+    animation: arrowMove 1.8s ease-in-out infinite;
 }
 
-/* NEXT PAGE */
+@keyframes arrowMove {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+
+}
+
+
+/* =========================
+   EDITION
+========================= */
+
+.edition {
+    position: absolute;
+
+    right: 4vw;
+    bottom: 30px;
+
+    display: flex;
+    gap: 20px;
+
+    font-size: 9px;
+    letter-spacing: 0.18em;
+}
+
+
+/* =========================
+   OBSERVE PAGE
+========================= */
 
 .intro-page {
+    position: relative;
+
     min-height: 100vh;
-    padding: 12vh 8vw;
+
+    padding: 45px 4vw 60px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+
+    background: #111;
 }
 
-.section-number {
-    font-size: 12px;
-    margin-bottom: 30px;
+
+/* HEADER */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 10px;
+    letter-spacing: 0.18em;
 }
 
-.intro-page h1 {
-    font-size: clamp(70px, 15vw, 220px);
-    line-height: 0.8;
-    letter-spacing: -0.07em;
+
+/* TITLE */
+
+.observe-title {
+    display: flex;
+    align-items: baseline;
+
+    font-size: clamp(80px, 18vw, 280px);
+
+    font-weight: 700;
+    line-height: 0.75;
+
+    letter-spacing: -0.08em;
 }
 
-.intro-text {
-    margin-top: 50px;
-    max-width: 400px;
-    font-size: 18px;
+.observe-title span:first-child {
+    font-size: 0.55em;
+}
+
+
+/* BOTTOM */
+
+.observe-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    font-size: 14px;
     line-height: 1.4;
 }
 
-/* MOBILE */
+.continue {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
 
+    .cover {
+        min-height: 100svh;
+    }
+
+    .top-bar {
+        top: 20px;
+        left: 6vw;
+        right: 6vw;
+    }
+
     .name {
-        left: 6%;
-        font-size: 18vw;
+        left: 6vw;
+
+        font-size: 20vw;
     }
 
     .introduction {
-        left: 6%;
+        left: 6vw;
         right: auto;
-        bottom: 15%;
-        font-size: 16px;
+        bottom: 17vh;
+
+        font-size: 14px;
+    }
+
+    .edition {
+        display: none;
     }
 
     .enter {
-        bottom: 5%;
+        bottom: 22px;
+    }
+
+    .intro-page {
+        padding: 25px 6vw 35px;
+    }
+
+    .observe-title {
+        font-size: 20vw;
+    }
+
+    .observe-bottom {
+        align-items: flex-end;
+    }
+
+    .continue {
+        display: none;
     }
 
 }
